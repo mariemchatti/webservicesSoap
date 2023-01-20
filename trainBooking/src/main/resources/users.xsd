@@ -1,0 +1,55 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://project.com/user"
+           targetNamespace="http://project.com/user"
+>
+    <xs:element name="addUserRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="username" type="xs:string" />
+                <xs:element name="password" type="xs:string" />
+                <xs:element name="firstname" type="xs:string" />
+                <xs:element name="lastname" type="xs:string" />
+                <xs:element name="email" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addUserResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="success" type="xs:boolean" />
+                <xs:element name="error" type="xs:string" />
+
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getUserRequest">
+        <xs:complexType>
+           <xs:sequence>
+               <xs:element name="username" type="xs:string" />
+               <xs:element name="password" type="xs:string" />
+
+           </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getUserResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="error" type="xs:string" />
+                <xs:element name="token" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="user">
+        <xs:sequence>
+            <xs:element name="username" type="xs:string" />
+            <xs:element name="password" type="xs:string" />
+            <xs:element name="firstname" type="xs:string" />
+            <xs:element name="lastname" type="xs:string" />
+            <xs:element name="email" type="xs:string" />
+            <xs:element name="token" type="xs:string" />
+            <xs:element name="id" type="xs:long" />
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

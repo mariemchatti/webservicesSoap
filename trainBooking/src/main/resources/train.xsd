@@ -1,0 +1,56 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://project.com/train"
+           targetNamespace="http://project.com/train"
+>
+    <xs:element name="getTrainRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="departureStationName" type="xs:string" />
+                <xs:element name="ArrivalStationName" type="xs:string" />
+                <xs:element name="OutboundDateTime" type="xs:dateTime" />
+                <xs:element name="ReturnDateTime" type="xs:dateTime" />
+                <xs:element name="NumberOfTickets" type="xs:int" />
+                <xs:element name="TravelClass" type="tns:TrainClass" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getTrainResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="train" type="tns:train" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="train">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" />
+            <xs:element name="trainID" type="xs:string" />
+            <xs:element name="departureStation" type="tns:station"/>
+            <xs:element name="arrivalStation" type="tns:station" />
+            <xs:element name="departureDateTime" type="xs:dateTime" />
+            <xs:element name="availableSeatsFirst" type="xs:int" />
+            <xs:element name="availableSeatsBusiness" type="xs:int" />
+            <xs:element name="availableSeatsStandard" type="xs:int" />
+            <xs:element name="flexiblePrice" type="xs:double" />
+            <xs:element name="nonFlexiblePrice" type="xs:double" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="TrainClass">
+        <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="FIRST"/>
+            <xs:enumeration value="STANDARD"/>
+            <xs:enumeration value="BUSINESS"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="station">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" />
+            <xs:element name="name" type="xs:string" />
+            <xs:element name="city" type="xs:string" />
+            <xs:element name="country" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

@@ -1,0 +1,31 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://project.com/reservation"
+           targetNamespace="http://project.com/reservation"
+>
+    <xs:element name="addReservationRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="outboundTrainId" type="xs:int" />
+                <xs:element minOccurs="0" name="returnTrainId" type="xs:int" />
+                <xs:element name="ticketType" type="xs:string" />
+                <xs:element name="trainClass" type="xs:string" />
+                <xs:element name="nbTickets" type="xs:int" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addReservationResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ResultText" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="TicketType">
+        <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="FLEXIBLE"/>
+            <xs:enumeration value="NOT_FLEXIBLE"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
